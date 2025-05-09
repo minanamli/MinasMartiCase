@@ -47,9 +47,6 @@ Bu proje bir iOS uygulaması olup, MapKit ve CoreLocation kullanarak gerçek zam
 - Medium - MKPolyline Overlay with Swift  
   https://medium.com/@nayananp/mkpolyline-overlay-using-swift-9b00d696edd6
 
-- StackOverflow - Store CLLocationCoordinate2D to UserDefaults  
-  https://stackoverflow.com/questions/18910612/store-cllocationcoordinate2d-to-nsuserdefaults
-
 - Medium - Polyline Decode & Draw (SwiftUI MapKit)  
   https://medium.com/%40mauvazquez/decoding-a-polyline-and-drawing-it-with-swiftui-mapkit-611952bd0ecb
 
