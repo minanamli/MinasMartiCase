@@ -27,6 +27,10 @@ final class LocationManager: NSObject {
 
     private override init() {
         super.init()
+        configureLocationManager()
+    }
+    
+    private func configureLocationManager(){
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // hassasiyeti yükselttim ama bataryadan fazla enerji tüketir
         locationManager.distanceFilter = 100
@@ -34,7 +38,7 @@ final class LocationManager: NSObject {
         locationManager.pausesLocationUpdatesAutomatically = false // kullanıcı hareketsiz kalırsa konum almayı durduruyor, case isteğine tam uymadığı için kapalı bıraktım açılabilir
         locationManager.allowsBackgroundLocationUpdates = true
     }
-    
+
     func requestPermission() {
         locationManager.requestAlwaysAuthorization()
     }
