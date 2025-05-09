@@ -1,15 +1,39 @@
+# Genel Bakış
 
-## Kullanılan Teknolojiler
+Bu iOS uygulaması, MapKit ve CoreLocation kullanarak gerçek zamanlı konum takibi, rota çizimi ve konum bazlı marker yerleştirme işlevlerini içerir. Uygulama MVVM mimarisiyle yapılandırılmıştır ve arka planda konum izleme desteğiyle donatılmıştır.
 
-- Swift 
-- UIKit
-- MapKit
-- CoreLocation
-- UserDefaults
-- MVVM mimarisi
-- Git & GitHub
+---
 
-## Kaynaklar
+# Özellikler
+
+- Gerçek zamanlı konum takibi
+- Her 100 metrede bir özel marker yerleştirme
+- Harita üzerinde çizilen rota (Polyline)
+- Marker'a tıklanınca adres bilgisi (reverse geocoding)
+- Apple Maps / Google Maps ile harici yönlendirme
+- Kullanıcı tarafından başlatılabilir/durdurulabilir konum takibi
+- Rota sıfırlama ve devam ettirme seçeneği
+- Uygulama yeniden açıldığında rota yükleme desteği (UserDefaults)
+- Uygulama arka planda çalışırken konum takibi desteği
+
+---
+
+# Teknik Detaylar
+
+- **Mimari**: MVVM
+- **Programlama Dili**: Swift
+- **Harita**: Apple MapKit
+- **Konum Takibi**: CoreLocation + CLLocationManager
+- **Veri Saklama**: UserDefaults
+- **Arka Plan Desteği**: Info.plist UIBackgroundModes → location
+- **Rota Çizimi**: MKPolyline + MKOverlayRenderer
+- **Adres Dönüşümü**: CLGeocoder ile reverse geocoding
+- **UI**: UIKit + Storyboard
+- **Versiyon Kontrol**: Git + GitHub
+
+---
+
+# Kaynaklar
 
 - Apple Developer - CLLocationManager  
   https://developer.apple.com/documentation/corelocation/cllocationmanager
@@ -28,3 +52,18 @@
 
 - Medium - Polyline Decode & Draw (SwiftUI MapKit)  
   https://medium.com/%40mauvazquez/decoding-a-polyline-and-drawing-it-with-swiftui-mapkit-611952bd0ecb
+
+---
+
+# Not
+
+- Uygulamanın konum izleme özelliği hem ön planda hem arka planda çalışacak şekilde yapılandırılmıştır.
+- Rota takibi sırasında uygulama arka planda çalışsa bile 100 metrelik değişiklikler marker ve polyline ile kaydedilir.
+- Rota sıfırlanmadıkça, uygulama yeniden başlatıldığında önceki rota kullanıcıya sunulur.
+
+---
+
+# Kurulum Notları
+
+- Xcode 14 ve üzeri sürümde açılabilir.
+- Info.plist dosyasına gerekli yetkiler (`NSLocationWhenInUseUsageDescription`, `NSLocationAlwaysAndWhenInUseUsageDescription`, `UIBackgroundModes`) eklenmiştir.
