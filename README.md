@@ -1,7 +1,7 @@
 
 ## Kullanılan Teknolojiler
 
-- Swift 5
+- Swift 
 - UIKit
 - MapKit
 - CoreLocation
