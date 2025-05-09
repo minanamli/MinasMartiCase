@@ -1,6 +1,6 @@
 # Genel Bakış
 
-Bu iOS uygulaması, MapKit ve CoreLocation kullanarak gerçek zamanlı konum takibi, rota çizimi ve konum bazlı marker yerleştirme işlevlerini içerir. Uygulama MVVM mimarisiyle yapılandırılmıştır ve arka planda konum izleme desteğiyle donatılmıştır.
+Bu proje bir iOS uygulaması olup, MapKit ve CoreLocation kullanarak gerçek zamanlı konum takibi, rota çizimi ve konum bazlı marker yerleştirme özelliklerini içerir.
 
 ---
 
@@ -8,12 +8,12 @@ Bu iOS uygulaması, MapKit ve CoreLocation kullanarak gerçek zamanlı konum tak
 
 - Gerçek zamanlı konum takibi
 - Her 100 metrede bir özel marker yerleştirme
-- Harita üzerinde çizilen rota (Polyline)
-- Marker'a tıklanınca adres bilgisi (reverse geocoding)
+- Harita üzerinde çizilen rota 
+- Marker'a tıklanınca adres bilgisi
 - Apple Maps / Google Maps ile harici yönlendirme
 - Kullanıcı tarafından başlatılabilir/durdurulabilir konum takibi
 - Rota sıfırlama ve devam ettirme seçeneği
-- Uygulama yeniden açıldığında rota yükleme desteği (UserDefaults)
+- Uygulama yeniden açıldığında rota yükleme desteği 
 - Uygulama arka planda çalışırken konum takibi desteği
 
 ---
@@ -27,7 +27,7 @@ Bu iOS uygulaması, MapKit ve CoreLocation kullanarak gerçek zamanlı konum tak
 - **Veri Saklama**: UserDefaults
 - **Arka Plan Desteği**: Info.plist UIBackgroundModes → location
 - **Rota Çizimi**: MKPolyline + MKOverlayRenderer
-- **Adres Dönüşümü**: CLGeocoder ile reverse geocoding
+- **Adres Gösterimi**: CLGeocoder ile reverse geocoding
 - **UI**: UIKit + Storyboard
 - **Versiyon Kontrol**: Git + GitHub
 
