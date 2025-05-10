@@ -69,7 +69,6 @@ class MainPageViewModel{
 extension MainPageViewModel: LocationManagerDelegate {
     func didLocationUpdate(_ coordinate: CLLocationCoordinate2D) {
         coordinates.append(coordinate)
-        coordinates.append(coordinate)
         saveRoute()
         NotificationCenter.default.post(name: .didReceiveNewCoordinate, object: nil, userInfo: ["coordinate": coordinate])
     }

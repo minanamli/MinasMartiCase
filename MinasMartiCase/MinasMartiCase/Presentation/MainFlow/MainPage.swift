@@ -30,20 +30,25 @@ class MainPage: UIViewController {
         checkSavedRoute()
     }
 
-    func setMapView(){
+    private func setMapView(){
         mapView.delegate = self
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
+        mapView.showsCompass = false
+        mapView.showsScale = false
+        mapView.pointOfInterestFilter = .excludingAll
     }
     
-    func setBindings(){
+    private func setBindings(){
         NotificationCenter.default.addObserver(self,selector: #selector(handleCoordinateUpdate(_:)), name: .didReceiveNewCoordinate,object: nil)
     }
     
-    func startLocationTracking(){
+    private func startLocationTracking(){
         mainPageVM.requestPermission()
         mainPageVM.startTracking()
     }
     
-    func checkSavedRoute() {
+    private func checkSavedRoute() {
         let savedCoordinates = mainPageVM.getSavedRoute()
         guard savedCoordinates.count >= 2 else { return }
 
@@ -76,7 +81,7 @@ class MainPage: UIViewController {
         }
     }
 
-    func drawSavedRoute() {
+    private func drawSavedRoute() {
         for coord in mainPageVM.coordinates {
             let annotation = MKPointAnnotation()
             annotation.coordinate = coord
@@ -100,7 +105,7 @@ class MainPage: UIViewController {
         drawPolyline()
     }
     
-    func drawPolyline() {
+    private func drawPolyline() {
         let coordinates = mainPageVM.coordinates
         guard coordinates.count >= 2 else { return }
 
@@ -111,7 +116,7 @@ class MainPage: UIViewController {
         restartButtonView.isUserInteractionEnabled = true
     }
 
-    func setUI(){
+    private func setUI(){
         mapBackView.clipsToBounds = true
         mapBackView.layer.cornerRadius = 12
         
@@ -138,7 +143,7 @@ class MainPage: UIViewController {
         updatePlayPauseUI(isTracking: isTracking)
     }
     
-    func updatePlayPauseUI(isTracking: Bool){
+    private func updatePlayPauseUI(isTracking: Bool){
         if isTracking {
             playPauseButtonImageView.setSystemImage(imgName: "pause.fill", tintColor: AppStyle.color(for: .iconColor))
             mainPageVM.startTracking()
@@ -173,7 +178,6 @@ extension MainPage: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let polyline = overlay as? MKPolyline {
             let renderer = MKPolylineRenderer(polyline: polyline)
-            renderer.strokeColor = .green
             renderer.lineWidth = 6
             renderer.strokeColor = AppStyle.color(for: .martiGreen)
             renderer.lineCap = .round
